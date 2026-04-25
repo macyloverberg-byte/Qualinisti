@@ -1,0 +1,20 @@
+PROFIT PLAN
+
+1. Partnerprogramme suchen:
+- Creative Fabrica Affiliate
+- Leonardo AI Affiliate / Impact
+- Kling Affiliate / Partnerprogramm
+- andere AI Tools mit Partnerprogramm
+
+2. Deinen Partnerlink holen.
+
+3. In affiliate-config.json die normalen Links ersetzen.
+
+4. Content machen:
+- TikTok: AI Bild in 10 Sekunden
+- YouTube Shorts: 3 kostenlose AI Tools
+- Instagram Reels: Prompt Vorher/Nachher
+
+5. Auszahlung:
+Je nach Anbieter im Affiliate Dashboard.
+Du bekommst Provision, wenn Nutzer über deinen Link kaufen oder sich qualifizieren.

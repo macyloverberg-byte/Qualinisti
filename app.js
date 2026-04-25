@@ -1,0 +1,18 @@
+let plan='free';let recommended='https://playgroundai.com/';
+let links={playground:'https://playgroundai.com/',leonardo:'https://app.leonardo.ai/',civitai:'https://civitai.com/',creativeFabrica:'https://studio.creativefabrica.com/',stacked:'https://studio.stacked.com/',zencreator:'https://app.zencreator.pro/',higgsfield:'https://higgsfield.ai/',kling:'https://klingai.com/',suno:'https://suno.com/',udio:'https://udio.com/'};
+const goalMap={Bild:['Playground AI','https://playgroundai.com/'], 'AI Creator':['Leonardo AI','https://app.leonardo.ai/'], Video:['Higgsfield','https://higgsfield.ai/'], Musik:['Suno','https://suno.com/'], 'Flux LoRA':['Civitai','https://civitai.com/'], Design:['Creative Fabrica','https://studio.creativefabrica.com/']};
+function syncGoal(){let g=document.getElementById('goal').value;let m=goalMap[g]||goalMap.Bild;recommended=m[1];document.getElementById('toolBadge').innerText='Empfohlen: '+m[0]}
+function buildPrompt(){syncGoal();let g=document.getElementById('goal').value;let idea=document.getElementById('idea').value;let q=document.getElementById('quality').value;let extra='no distortion, no watermark, no fake unreadable text';if(g==='Video')extra='cinematic motion, smooth camera, vertical social format, no glitches';if(g==='Musik')extra='catchy hook, clean mix, original melody, no copyrighted artist imitation';if(g==='Flux LoRA')extra='Flux ready, LoRA friendly, negative prompt: blurry, bad hands, low quality, watermark';let premium=plan==='premium'?' premium prompt architecture, stronger composition, advanced details,':'';document.getElementById('prompt').value=`${idea}, ${q}, ${premium} ${extra}.`;document.getElementById('status').innerText='Prompt bereit.'}
+function copyPrompt(){navigator.clipboard.writeText(document.getElementById('prompt').value);document.getElementById('status').innerText='Prompt kopiert.'}
+function openRecommended(){copyPrompt();window.open(recommended,'_blank')}
+function savePrompt(){localStorage.setItem('lastPrompt',document.getElementById('prompt').value);document.getElementById('status').innerText='Prompt lokal gespeichert.'}
+function setPlan(p,el){plan=p;document.querySelectorAll('.planSwitch button').forEach(b=>b.classList.remove('active'));el.classList.add('active');document.body.classList.toggle('premiumUnlocked',p==='premium');buildPrompt()}
+function unlockPremium(){plan='premium';document.body.classList.add('premiumUnlocked');document.getElementById('status').innerText='Premium lokal aktiviert. Echte Zahlung später anschließen.'}
+function makeVariations(){if(plan!=='premium'){alert('Premium lokal aktivieren oder später Zahlungslink anschließen.');return}let base=document.getElementById('prompt').value;document.getElementById('prompt').value=base+'\n\nVariation A: more cinematic.\nVariation B: more commercial.\nVariation C: more realistic.'}
+function openAffiliate(key){window.open(links[key]||'#','_blank')}
+function saveAff(){let arr=JSON.parse(localStorage.getItem('aff')||'[]');arr.unshift({name:document.getElementById('affName').value,url:document.getElementById('affUrl').value});localStorage.setItem('aff',JSON.stringify(arr));renderAff()}
+function renderAff(){let arr=JSON.parse(localStorage.getItem('aff')||'[]');let box=document.getElementById('affList');box.innerHTML='';arr.forEach(x=>{let d=document.createElement('div');d.innerHTML='<strong>'+x.name+'</strong><p>'+x.url+'</p>';box.appendChild(d)})}
+function openPanel(id){document.getElementById(id).classList.remove('closed')}
+function closePanels(){document.querySelectorAll('.modal').forEach(m=>m.classList.add('closed'))}
+function toggleTheme(){let h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'}
+buildPrompt();renderAff();

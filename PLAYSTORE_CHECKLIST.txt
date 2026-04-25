@@ -1,0 +1,26 @@
+PLAY STORE VORBEREITUNG
+
+Diese App ist eine PWA/Web-App.
+
+Für echten Google Play Store Upload brauchst du später:
+1. Google Play Console Account, einmalig ca. 25 USD
+2. Android Wrapper: Capacitor oder Trusted Web Activity
+3. App Name, Icon, Screenshots
+4. Datenschutzerklärung URL
+5. Content Rating ausfüllen
+6. Keine falschen Versprechen wie unbegrenzt kostenlose AI
+7. Impressum und Datenschutz sauber ausfüllen
+
+Empfohlene Struktur:
+Free:
+- Prompt Builder
+- Tool-Links
+- lokale Speicherung
+
+Premium:
+- Prompt Varianten
+- Premium Packs
+- später API oder Mitgliederbereich
+
+Wichtig:
+Wenn du echte AI per API einbaust, entstehen Kosten. Deshalb Premium oder Nutzer-eigene API-Keys verwenden.

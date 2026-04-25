@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050509">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<title>Qualisinity</title>
+</head>
+<body>
+<main class="app">
+<nav class="nav">
+  <div class="brand"><div class="logo"></div><div>Qualisinity<br><span>AI Creator Studio</span></div></div>
+  <div class="navActions">
+    <button class="ghost" onclick="toggleTheme()">Light</button>
+    <button class="pill" onclick="openPanel('assistant')">Helper</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="badge">Free + Premium · Affiliate-ready · Play Store vorbereitet</div>
+    <h1>AI Content erstellen. Schnell. Klar. Profit-ready.</h1>
+    <p>Qualisinity hilft Nutzern, bessere Prompts zu bauen und passende AI-Tools zu öffnen. Du kannst später Affiliate-Links einsetzen und Premium-Funktionen aktivieren.</p>
+    <div class="actions">
+      <a class="btn primary" href="#studio">Start</a>
+      <a class="btn secondary" href="#pricing">Free & Premium</a>
+      <a class="btn secondary" href="#profit">Profit Center</a>
+    </div>
+  </div>
+  <div class="heroCard"><img src="assets/preview.png" alt="Qualisinity preview"></div>
+</section>
+
+<section id="studio" class="studio">
+  <div class="sectionHead">
+    <h2>Studio</h2>
+    <p>Einfach arbeiten oder Premium-Workflow nutzen. Nutzer behalten Freiheit, aber bekommen klare Hilfe.</p>
+  </div>
+
+  <div class="planSwitch">
+    <button class="active" onclick="setPlan('free',this)">Free</button>
+    <button onclick="setPlan('premium',this)">Premium</button>
+  </div>
+
+  <div class="work">
+    <div>
+      <label>Ziel</label>
+      <select id="goal" onchange="syncGoal()">
+        <option>Bild</option>
+        <option>AI Creator</option>
+        <option>Video</option>
+        <option>Musik</option>
+        <option>Flux LoRA</option>
+        <option>Design</option>
+      </select>
+      <label>Deine Idee</label>
+      <textarea id="idea">realistic adult AI creator, luxury style, natural skin, Instagram 9:16</textarea>
+      <label>Qualität</label>
+      <select id="quality">
+        <option>Ultra realistic, 8K, premium lighting</option>
+        <option>Cinematic, high fashion, sharp details</option>
+        <option>Clean commercial style, no fake text</option>
+      </select>
+      <div class="actions">
+        <button class="btn primary" onclick="buildPrompt()">Prompt erstellen</button>
+        <button class="btn secondary" onclick="copyPrompt()">Kopieren</button>
+      </div>
+    </div>
+    <div>
+      <div class="toolBadge" id="toolBadge">Empfohlen: Playground AI</div>
+      <textarea id="prompt" readonly></textarea>
+      <div class="actions">
+        <button class="btn primary" onclick="openRecommended()">Tool öffnen</button>
+        <button class="btn secondary" onclick="savePrompt()">Speichern</button>
+        <button class="btn secondary premiumOnly" onclick="makeVariations()">Premium Varianten</button>
+      </div>
+      <p id="status">Free nutzt externe Tools. Premium kann später API oder erweiterte Packs bekommen.</p>
+    </div>
+  </div>
+
+  <div class="premiumBox" id="premiumBox">
+    <strong>Premium aktivierbar</strong>
+    <p>Premium ist lokal vorbereitet: bessere Prompt-Varianten, mehr Packs, später Zahlungslink oder API. Noch keine echten Zahlungen eingebaut.</p>
+    <button class="btn primary" onclick="unlockPremium()">Premium lokal testen</button>
+  </div>
+</section>
+
+<section id="pricing" class="pricing">
+  <div class="sectionHead">
+    <h2>Free & Premium</h2>
+    <p>So wirkt die App wie ein echtes Produkt, ohne dass du sofort API-Kosten hast.</p>
+  </div>
+  <div class="priceGrid">
+    <div class="price">
+      <strong>Free</strong>
+      <h3>0 €</h3>
+      <p>Prompt Builder, Tool-Empfehlung, externe Free-Tools, lokale Speicherung.</p>
+      <a href="#studio" class="btn secondary">Free nutzen</a>
+    </div>
+    <div class="price featured">
+      <strong>Premium</strong>
+      <h3>9 €</h3>
+      <p>Prompt-Varianten, Premium Packs, schnellere Workflows, später API oder Mitgliederbereich.</p>
+      <button class="btn primary" onclick="openPanel('premiumInfo')">Premium ansehen</button>
+    </div>
+    <div class="price">
+      <strong>Studio</strong>
+      <h3>29 €</h3>
+      <p>Für Creator, Marken, Agenturen. Später mit Kontaktformular oder Stripe Link.</p>
+      <button class="btn secondary" onclick="alert('Kontaktlink später einfügen.')">Anfragen</button>
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="tools">
+  <div class="sectionHead">
+    <h2>Tools</h2>
+    <p>Nur die wichtigsten sichtbar. Affiliate-Links kannst du später ersetzen.</p>
+  </div>
+  <div class="toolGrid">
+    <button onclick="openAffiliate('playground')"><strong>Playground</strong><span>Bilder kostenlos testen</span></button>
+    <button onclick="openAffiliate('leonardo')"><strong>Leonardo</strong><span>Creator Bilder</span></button>
+    <button onclick="openAffiliate('civitai')"><strong>Civitai</strong><span>Flux, LoRA, Modelle</span></button>
+    <button onclick="openAffiliate('higgsfield')"><strong>Higgsfield</strong><span>AI Video</span></button>
+    <button onclick="openAffiliate('kling')"><strong>Kling</strong><span>Video</span></button>
+    <button onclick="openAffiliate('creativeFabrica')"><strong>Creative Fabrica</strong><span>Design & Assets</span></button>
+    <button onclick="openAffiliate('suno')"><strong>Suno</strong><span>AI Musik</span></button>
+    <button onclick="openAffiliate('udio')"><strong>Udio</strong><span>AI Songs</span></button>
+  </div>
+</section>
+
+<section id="profit" class="profit">
+  <div class="sectionHead">
+    <h2>Profit Center</h2>
+    <p>Hier ist dein einfacher Geld-Plan. Du verdienst nicht durch Magie, sondern durch Traffic und Partnerlinks.</p>
+  </div>
+  <div class="profitGrid">
+    <div class="box"><strong>1. Partnerprogramm</strong><p>Bei Tools anmelden und deinen Affiliate-Link holen.</p></div>
+    <div class="box"><strong>2. Link ersetzen</strong><p>In affiliate-config.json normale Links durch Partnerlinks ersetzen.</p></div>
+    <div class="box"><strong>3. Traffic holen</strong><p>TikTok, Shorts, Insta: Zeig, wie schnell AI Content geht.</p></div>
+    <div class="box"><strong>4. Auszahlung</strong><p>Im Anbieter-Dashboard prüfen: Klicks, Sales, Provision.</p></div>
+  </div>
+
+  <div class="box">
+    <h3>Affiliate Manager lokal</h3>
+    <p>Speichert lokal. Hilft dir, deine Links zu sammeln.</p>
+    <div class="miniForm">
+      <input id="affName" placeholder="Tool Name">
+      <input id="affUrl" placeholder="Dein Affiliate Link">
+      <button class="btn primary" onclick="saveAff()">Speichern</button>
+    </div>
+    <div id="affList" class="affList"></div>
+  </div>
+</section>
+
+<section id="playstore" class="playstore">
+  <div class="sectionHead">
+    <h2>Play Store vorbereitet</h2>
+    <p>Diese ZIP ist eine Web-App/PWA. Für den Play Store brauchst du später einen Wrapper, zum Beispiel Capacitor oder Trusted Web Activity.</p>
+  </div>
+  <div class="profitGrid">
+    <div class="box"><strong>PWA</strong><p>Manifest, Icons und Service Worker sind drin.</p></div>
+    <div class="box"><strong>Android Wrapper</strong><p>Später mit Capacitor oder Android Studio in APK/AAB umwandeln.</p></div>
+    <div class="box"><strong>Play Console</strong><p>Google Developer Account kostet einmalig ca. 25 USD.</p></div>
+    <div class="box"><strong>Policy</strong><p>Keine falschen Versprechen, Datenschutz und Impressum sauber halten.</p></div>
+  </div>
+</section>
+
+<section class="legal">
+  <h2>Rechtlich sauber bleiben</h2>
+  <p>Qualisinity erstellt selbst keine Bilder, Videos oder Musik. Ergebnisse entstehen bei externen Tools. Nutzung nur ab 18 Jahren.</p>
+  <div class="links">
+    <a href="impressum.html">Impressum</a>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</section>
+
+<footer>Qualisinity · Free + Premium · Affiliate-ready · Play Store vorbereitet</footer>
+</main>
+
+<div class="modal closed" id="assistant">
+  <div class="modalBox">
+    <button class="close" onclick="closePanels()">Zu</button>
+    <h2>Qualisinity Helper</h2>
+    <p>Free: Prompt bauen, Tool öffnen, dort generieren. Premium: später bessere Packs, API oder Mitgliederbereich. Geld: Affiliate Links einsetzen und Traffic holen.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="location.hash='studio';closePanels()">Studio</button>
+      <button class="btn secondary" onclick="location.hash='profit';closePanels()">Profit</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal closed" id="premiumInfo">
+  <div class="modalBox">
+    <button class="close" onclick="closePanels()">Zu</button>
+    <h2>Premium Plan</h2>
+    <p>Premium ist vorbereitet, aber noch nicht mit echter Zahlung verbunden. Später kannst du Stripe, Lemon Squeezy oder einen Zahlungslink anschließen.</p>
+    <button class="btn primary" onclick="unlockPremium();closePanels()">Premium lokal testen</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

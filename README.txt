@@ -1,0 +1,1 @@
+Qualisinity Free Premium + Affiliate + Play Store vorbereitet\n\nVor Upload: impressum.html anpassen. Affiliate Links in affiliate-config.json ersetzen.\n
